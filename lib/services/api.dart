@@ -13,10 +13,10 @@ import 'package:mohamed_suliman_task3_itida/utils/product_model.dart';
 
 class Api {
   static final dio = Dio();
-  static Future<List<ProductElement>> getProductsData() async {
-    final response = await dio.get("https://dummyjson.com/products");
+  static Future<List<Product>> getProductsData() async {
+    final response = await dio.get("https://dummyjson.com/cart/1");
     var data = response.data;
-    Product product = Product.fromJson(data);
-    return product.products ?? [];
+    Cart cart = Cart.fromJson(data);
+    return cart.products ?? [];
   }
 }

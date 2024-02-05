@@ -35,7 +35,7 @@ class _HomeState extends State<HomeLand> {
         currentIndex: indexNav,
         items:const [
          BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
-         BottomNavigationBarItem(icon: Icon(Icons.category),label: "Products"),
+         BottomNavigationBarItem(icon: Icon(Icons.add_shopping_cart),label: "Cart"),
          BottomNavigationBarItem(icon: Icon(Icons.settings),label: "Settings"),
       ],),
     );

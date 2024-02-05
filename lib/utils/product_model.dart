@@ -1,83 +1,111 @@
-class Product {
-  List<ProductElement> products;
+class ProductOfCarts {
+  List<Cart> carts;
   int total;
   int skip;
   int limit;
 
-  Product({
-    required this.products,
+  ProductOfCarts({
+    required this.carts,
     required this.total,
     required this.skip,
     required this.limit,
   });
 
-  factory Product.fromJson(Map<String, dynamic> json) => Product(
-    products: List<ProductElement>.from(json["products"].map((x) => ProductElement.fromJson(x))),
+  factory ProductOfCarts.fromJson(Map<String, dynamic> json) => ProductOfCarts(
+    carts: List<Cart>.from(json["carts"].map((x) => Cart.fromJson(x))),
     total: json["total"],
     skip: json["skip"],
     limit: json["limit"],
   );
 
   Map<String, dynamic> toJson() => {
-    "products": List<dynamic>.from(products.map((x) => x.toJson())),
+    "carts": List<dynamic>.from(carts.map((x) => x.toJson())),
     "total": total,
     "skip": skip,
     "limit": limit,
   };
 }
 
-class ProductElement {
+class Cart {
   int id;
-  String title;
-  String description;
-  int price;
-  double discountPercentage;
-  double rating;
-  int stock;
-  String brand;
-  String category;
-  String thumbnail;
-  List<String> images;
+  List<Product> products;
+  int total;
+  int discountedTotal;
+  int userId;
+  int totalProducts;
+  int totalQuantity;
 
-  ProductElement({
+  Cart({
     required this.id,
-    required this.title,
-    required this.description,
-    required this.price,
-    required this.discountPercentage,
-    required this.rating,
-    required this.stock,
-    required this.brand,
-    required this.category,
-    required this.thumbnail,
-    required this.images,
+    required this.products,
+    required this.total,
+    required this.discountedTotal,
+    required this.userId,
+    required this.totalProducts,
+    required this.totalQuantity,
   });
 
-  factory ProductElement.fromJson(Map<String, dynamic> json) => ProductElement(
+  factory Cart.fromJson(Map<String, dynamic> json) => Cart(
+    id: json["id"],
+    products: List<Product>.from(json["products"].map((x) => Product.fromJson(x))),
+    total: json["total"],
+    discountedTotal: json["discountedTotal"],
+    userId: json["userId"],
+    totalProducts: json["totalProducts"],
+    totalQuantity: json["totalQuantity"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "products": List<dynamic>.from(products.map((x) => x.toJson())),
+    "total": total,
+    "discountedTotal": discountedTotal,
+    "userId": userId,
+    "totalProducts": totalProducts,
+    "totalQuantity": totalQuantity,
+  };
+}
+
+class Product {
+  int id;
+  String title;
+  int price;
+  int quantity;
+  int total;
+  double discountPercentage;
+  int discountedPrice;
+  String thumbnail;
+
+  Product({
+    required this.id,
+    required this.title,
+    required this.price,
+    required this.quantity,
+    required this.total,
+    required this.discountPercentage,
+    required this.discountedPrice,
+    required this.thumbnail,
+  });
+
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
     id: json["id"],
     title: json["title"],
-    description: json["description"],
     price: json["price"],
+    quantity: json["quantity"],
+    total: json["total"],
     discountPercentage: json["discountPercentage"]?.toDouble(),
-    rating: json["rating"]?.toDouble(),
-    stock: json["stock"],
-    brand: json["brand"],
-    category: json["category"],
+    discountedPrice: json["discountedPrice"],
     thumbnail: json["thumbnail"],
-    images: List<String>.from(json["images"].map((x) => x)),
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
     "title": title,
-    "description": description,
     "price": price,
+    "quantity": quantity,
+    "total": total,
     "discountPercentage": discountPercentage,
-    "rating": rating,
-    "stock": stock,
-    "brand": brand,
-    "category": category,
+    "discountedPrice": discountedPrice,
     "thumbnail": thumbnail,
-    "images": List<dynamic>.from(images.map((x) => x)),
   };
 }
