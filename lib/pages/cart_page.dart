@@ -27,7 +27,6 @@ class _ProductsPageState extends State<ProductsPage> {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: Colors.grey,
         body: Padding(
@@ -36,46 +35,12 @@ class _ProductsPageState extends State<ProductsPage> {
                 ? const Center(
                     child: CircularProgressIndicator(
                     color: Colors.white,
-                  ))
-                :
-                // GridView.builder(
-                //
-                //     physics: BouncingScrollPhysics(),
-                //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                //
-                //       crossAxisCount: 2,
-                //       mainAxisSpacing: 9,
-                //       crossAxisSpacing: 9,
-                //     ),
-                //     itemCount:cartList.length ,
-                //     itemBuilder: (_, index) {
-                //
-                //       return Container(
-                //         decoration: BoxDecoration(
-                //             color: Colors.white, borderRadius: BorderRadius.circular(25)),
-                //         width: width / 2,
-                //         child: Column(
-                //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //           children: [
-                //             Container(
-                //               width: width / 3,
-                //               height: 80,
-                //               child:Image.network(cartList[index].thumbnail),
-                //             ),
-                //             Text(cartList[index].title,style: TextStyle(fontSize: 20),textAlign: TextAlign.center,),
-                //             Text('${cartList[index].price.toString()} \$',style: TextStyle(fontSize: 17,color: Colors.red),),
-                //
-                //           ],
-                //         ),
-                //       );
-                //
-                //     }),
-                ListView.builder(
-                  physics: BouncingScrollPhysics(),
+                  )) : ListView.builder(
+                  physics: const BouncingScrollPhysics(),
                     itemCount: cartList.length,
                     itemBuilder: (_, index) {
                       return Container(
-                        margin: EdgeInsets.only(bottom: 15),
+                        margin: const EdgeInsets.only(bottom: 15),
                         width: double.infinity,
                         height: 250,
                         decoration: BoxDecoration(
@@ -96,12 +61,12 @@ class _ProductsPageState extends State<ProductsPage> {
                             ),
                             Text(
                               cartList[index].title,
-                              style: TextStyle(fontSize: 20),
+                              style: const TextStyle(fontSize: 20),
                               textAlign: TextAlign.center,
                             ),
                             Text(
                               'Price: ${cartList[index].price.toString()} \$',
-                              style: TextStyle(fontSize: 19, color: Colors.red),
+                              style: const TextStyle(fontSize: 19, color: Colors.red),
                             ),
                           ],
                         ),
