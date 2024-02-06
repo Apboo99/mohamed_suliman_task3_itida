@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mohamed_suliman_task3_itida/pages/settings_page.dart';
 import 'package:mohamed_suliman_task3_itida/services/api.dart';
 import 'package:mohamed_suliman_task3_itida/utils/product_model.dart';
@@ -19,7 +20,15 @@ class _HomeState extends State<HomeLand> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: indexNav==0?Text("Home"):indexNav==1?Text("Products"):Text("Settings"),centerTitle: true,elevation: 10,),
+
+      appBar: AppBar(systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarColor: Colors.white
+      ),foregroundColor: Colors.black,backgroundColor: Colors.white,title: indexNav==0?
+      Text("Home"):indexNav==1?
+      Text("Products"):
+      Text("Settings"),
+        centerTitle: true,
+        elevation: 5,),
       body: indexNav==0?const HomePage():indexNav==1? ProductsPage():const SettingsPage(),
       bottomNavigationBar: BottomNavigationBar(
 
